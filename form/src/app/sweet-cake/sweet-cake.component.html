@@ -1,0 +1,55 @@
+<h1>My Cake</h1>
+<form #myCake="ngForm" (submit)="getCake(myCake.value)">
+    <input type="text" ngModel name="cakeName" placeholder="Cake Name">
+    <p></p>
+    <label>Cake Type</label>
+    <br>
+    <input type="radio" id="cocao" ngModel name="choice" value="cocao">
+    <label for="cocao">cocao</label>
+    <br>
+    <input type="radio" id="vanilla" ngModel name="choice" value="vanilla">
+    <label for="vanilla">vanilla</label>
+    <br>
+    <input type="radio" id="carrot" ngModel name="choice" value="carrot">
+    <label for="carrot">carrot</label>
+    <p></p>
+    <input type="text" mgModel name="cakeTags" placeholder="CakeTags">
+    <p></p>
+    <button>Submit</button>
+    <h3>Cake Details:</h3>
+    <div>
+        <div [ngSwitch]="cake.choice">
+            <p *ngSwitchCase="'cocao'">
+                <img width="200px" src={{cocoCake}}>
+            </p>
+            <p *ngSwitchCase="'vanilla'">
+                <img width="200px" src= {{vanilCake}}>
+            </p>
+            <p *ngSwitchCase="'carrot'">
+                <img width="200px" src={{carrCake}}>
+            </p>
+            <p *mgSwitchDefault="">
+
+            </p>
+        </div>
+        <p>Cake Name: {{cake.cakeName}}</p>
+        <p>Cake Type: {{cake.choice}}</p>
+        <ul>
+            <li *ngFor="let tag of cake.cakeTags">{{tag}}</li>
+        </ul>
+
+        <div *ngIf="cake.choice==='carrot'">
+            <h4>Carrot recipe:</h4>
+            <ol>
+                <li> 2 cups (250 grams) all-purpose flour (spooned & leveled).</li>
+                <li> 2 teaspoons baking powder.</li>
+                <li>1 teaspoon baking soda.</li>
+                <li>1 and 1/2 teaspoons ground cinnamon.</li>
+                <li> 1/2 teaspoon ground ginger.</li>
+                <li>1/4 teaspoon ground nutmeg.</li>
+                <li>1/2 teaspoon salt.</li>
+                <li>3/4 cup (180ml) canola or vegetable oil.</li>
+            </ol>
+        </div>
+    </div>
+</form>
